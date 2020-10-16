@@ -103,8 +103,10 @@ CREATE TABLE ENROLLMENT (
 ```sql
 SELECT COURSE.CRS_TITILE
 FROM COURSE
+-- Joining the courses with the section on crs_code and term
 JOIN SECTION ON COURSE.CRS_CODE=SECTION.CRS_CODE
 AND SECTION.SEC_TERM="SPRING_2019-2020"
+-- Joining Enrollment with the joint of courses and sections on sec_id
 JOIN ENROLLMENT ON ENROLLMENT.SEC_ID=SECTION.SEC_ID
 AND ENROLLMENT.STU_ID=1070401;
 ```
@@ -200,13 +202,12 @@ FROM (
         -- Selecting all the courses
         SELECT *
         FROM Course
-        -- Joining the courses with the section on crs_code
+        -- Joining the courses with the section on crs_code and term
         JOIN Section ON Course.crs_code = Section.crs_code
-        -- Finding the largest number of the last term
         AND Section.sec_term = "SPRING_2019-2020" )WHERE crs_code IN (
                 SELECT crs_code
                 FROM Section
-                -- Counting whether crs_code has more than 1 occurrences
+                -- Counting whether crs_code is not distinct
                 GROUP BY crs_code
                 HAVING COUNT(*)>1
 );
@@ -219,6 +220,7 @@ SELECT sec_id, crs_code
 FROM (
     SELECT *
     FROM (
+       -- Joining the courses with the section on crs_code
         SELECT *
         FROM Course
         JOIN Section ON Course.crs_code = Section.crs_code
@@ -230,6 +232,7 @@ FROM (
         GROUP BY crs_code
         HAVING COUNT(*)>1
 ))
+-- Finding whether the courses are in Abu Dhabi or Al-Ain
 JOIN Location ON Location.loc_code =Section.loc_code
 AND loc_name == ‘Abu Dhabi’
 OR loc_name == ‘Al-Ain’);
