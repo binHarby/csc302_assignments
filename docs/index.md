@@ -9,7 +9,7 @@
 ## TABLES OF THE ERD 🚀️📜
 ---
 
-#### we create them in this order and code
+#### We create them in this order and code
 
 ```sql
 --Student table
