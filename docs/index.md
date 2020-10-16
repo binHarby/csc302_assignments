@@ -230,4 +230,4 @@ JOIN Location ON Location.loc_code =Section.loc_code
 AND loc_name == ‘Abu Dhabi’
 OR loc_name == ‘Al-Ain’);
 ```
-
+> Made by Abdulla Alameri
