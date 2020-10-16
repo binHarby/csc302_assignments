@@ -6,7 +6,8 @@
 
 #### we create them in this order and code
 
-```SQL
+```sql
+
 --Student table
 CREATE TABLE STUDENT(
     STU_ID  NUMBER,
